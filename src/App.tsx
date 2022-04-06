@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import style from "./App.module.scss";
+import { getCatalogue, setPagesCount } from "./redux/catalogueReducer";
+import Paginator from "./components/paginator";
+import Catalog from "./components/catalog";
+import PageSizeSelector from "./components/pageSizeSelector";
+import InStockBtns from "./components/inStockBtn";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  //const { pagesCount } = useSelector((state: any) => state.catalogue);
+  const [thisPage, setThisPage] = useState(1);
+  const [pageSize, setPageSize] = useState(20);
+
+  useEffect(() => {
+    loadPage().then(() => dispatch(setPagesCount(pageSize)));
+  });
+
+  const loadPage = async () => {
+    await dispatch(getCatalogue());
+  };
+
+  /* useEffect(() => {
+    dispatch(getCatalogue());
+    dispatch(setPagesCount(pageSize));
+    console.log("use 2");
+  }, [pageSize]); */
+
+  const changePageSize = (pageDimension: number) => {
+    dispatch(setThisPage(1));
+    dispatch(setPageSize(pageDimension));
+    loadPage().then(() => dispatch(setPagesCount(pageSize)));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.App}>
+      <h1>Explore</h1>
+      <h6>Buy and sell digital fashion NFT art</h6>
+      <div>
+        <Paginator thisPage={thisPage} setThisPage={setThisPage} />
+        <PageSizeSelector changePageSize={changePageSize} />
+        <InStockBtns pageSize={pageSize} />
+        <Catalog pageSize={pageSize} thisPage={thisPage} />
+        <Paginator thisPage={thisPage} setThisPage={setThisPage} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

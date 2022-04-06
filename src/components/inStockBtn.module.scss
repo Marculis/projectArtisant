@@ -1,0 +1,13 @@
+.stockBtn {
+  margin-bottom: 20px;
+  button {
+    color: #000000;
+    text-transform: capitalize;
+    span {
+      text-transform: uppercase;
+      font-style: italic;
+      color: #0040e6;
+      text-decoration: underline;
+    }
+  }
+}

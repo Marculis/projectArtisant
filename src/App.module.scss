@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+$open-sans: "Open Sans", sans-serif;
+
+.App {
+  font-family: $open-sans;
+  font-weight: 400;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  h1 {
+    font-weight: 700;
+    font-size: 32px;
+    margin-top: 0;
+  }
+  h6 {
+    color: #828282;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+  }
+  button {
+    background: white;
+    border-radius: 5px;
+    width: fit-content;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: $open-sans;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #0040e6;
+    border: 1.5px solid black;
+    cursor: pointer;
+    padding: 4px 10px;
+    transition: 0.2s;
+    &:hover {
+      opacity: 0.6;
+      box-shadow: 2px 2px 5px grey;
+    }
+    &:disabled {
+      color: grey;
+    }
+  }
+}
+@media screen and (max-width: 450px) and (min-width: 250px) {
+  .App {
+    margin: 0px;
+    padding: 5px;
+    width: 350px;
+  }
+}

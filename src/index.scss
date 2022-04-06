@@ -1,0 +1,10 @@
+body {
+  margin: 0px auto;
+  width: 1300px;
+}
+@media screen and (max-width: 450px) and (min-width: 300px) {
+  body {
+    width: 350px;
+    margin: 0;
+  }
+}
