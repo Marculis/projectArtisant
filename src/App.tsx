@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "./App.module.scss";
 import { getCatalogue, setPagesCount } from "./redux/catalogueReducer";
 import Paginator from "./components/paginator";
@@ -33,7 +33,7 @@ const App = () => {
       <div>
         <Paginator thisPage={thisPage} setThisPage={setThisPage} />
         <PageSizeSelector changePageSize={changePageSize} />
-        <InStockBtns pageSize={pageSize} />
+        <InStockBtns setThisPage={setThisPage} />
         <Catalog pageSize={pageSize} thisPage={thisPage} />
         <Paginator thisPage={thisPage} setThisPage={setThisPage} />
       </div>
