@@ -14,6 +14,7 @@ const InStockBtns = (props: any) => {
           onClick={() => {
             dispatch(getCatalogue());
             setStockItems(false);
+            props.setThisPage(1);
           }}
         >
           <span> All </span> items
@@ -23,6 +24,7 @@ const InStockBtns = (props: any) => {
           onClick={() => {
             dispatch(setItemsInStock());
             setStockItems(true);
+            props.setThisPage(1);
           }}
         >
           Items<span> in stock</span>
