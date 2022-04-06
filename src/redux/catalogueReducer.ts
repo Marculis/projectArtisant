@@ -12,16 +12,20 @@ export const getCatalogue = createAsyncThunk(
 export const catalogueReducer = createSlice({
   name: "catalogue",
   initialState: {
-    isLoading: false,
     catalogueList: [],
+    catalogueListInStock: [],
     pagesCount: 1,
+    pageSize: 20,
   },
   reducers: {
     setCatalogue: (state, action) => {
       state.catalogueList = action.payload;
     },
-    setPagesCount: (state, action) => {
-      state.pagesCount = state.catalogueList.length / action.payload;
+    setPagesCount: (state) => {
+      state.pagesCount = state.catalogueList.length / state.pageSize;
+    },
+    setPageSize: (state, action) => {
+      state.pageSize = action.payload;
     },
     setItemsInStock: (state) => {
       state.catalogueList = state.catalogueList.filter((item: any) => {
@@ -29,11 +33,11 @@ export const catalogueReducer = createSlice({
           return item;
         }
       });
+      state.pagesCount = state.catalogueList.length / state.pageSize;
     },
   },
- 
 });
 
-export const { setCatalogue, setPagesCount, setItemsInStock } =
+export const { setCatalogue, setPagesCount, setPageSize, setItemsInStock } =
   catalogueReducer.actions;
 export default catalogueReducer.reducer;
