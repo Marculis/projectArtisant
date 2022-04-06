@@ -9,7 +9,6 @@ import InStockBtns from "./components/inStockBtn";
 
 const App = () => {
   const dispatch = useDispatch();
-  //const { pagesCount } = useSelector((state: any) => state.catalogue);
   const [thisPage, setThisPage] = useState(1);
   const [pageSize, setPageSize] = useState(20);
 
@@ -20,12 +19,6 @@ const App = () => {
   const loadPage = async () => {
     await dispatch(getCatalogue());
   };
-
-  /* useEffect(() => {
-    dispatch(getCatalogue());
-    dispatch(setPagesCount(pageSize));
-    console.log("use 2");
-  }, [pageSize]); */
 
   const changePageSize = (pageDimension: number) => {
     dispatch(setThisPage(1));
