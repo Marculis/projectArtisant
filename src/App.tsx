@@ -22,7 +22,7 @@ const App = () => {
 
   const changePageSize = (pageDimension: number) => {
     setThisPage(1);
-    dispatch(setPageSize(pageDimension));
+    setPageSize(pageDimension);
     loadPage().then(() => dispatch(setPagesCount(pageSize)));
   };
 
