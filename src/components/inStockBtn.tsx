@@ -8,7 +8,7 @@ const InStockBtns = (props: any) => {
   const dispatch = useDispatch();
 
   return (
-    <div className={style.stockBtn}>
+    <span className={style.stockBtn}>
       {stockItems ? (
         <button
           onClick={() => {
@@ -30,7 +30,7 @@ const InStockBtns = (props: any) => {
           Items<span> in stock</span>
         </button>
       )}
-    </div>
+    </span>
   );
 };
 export default InStockBtns;
