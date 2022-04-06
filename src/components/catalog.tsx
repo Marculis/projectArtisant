@@ -3,14 +3,16 @@ import catalogueImg from "../assets/images/catalogueItem.png";
 import style from "./catalog.module.scss";
 
 const Catalog = (props: any) => {
-  const { catalogueList } = useSelector((state: any) => state.catalogue);
+  const { catalogueList, pageSize } = useSelector(
+    (state: any) => state.catalogue
+  );
 
   return (
     <div className={style.itemsContainer}>
       {catalogueList.map((item: any, index: number) => {
         if (
-          index >= (props.thisPage - 1) * props.pageSize &&
-          index < props.thisPage * props.pageSize
+          index >= (props.thisPage - 1) * pageSize &&
+          index < props.thisPage * pageSize
         ) {
           return (
             <div className={style.catalogItem} key={item.product_id}>
