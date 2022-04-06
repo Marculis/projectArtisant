@@ -4,12 +4,17 @@ import style from "./paginator.module.scss";
 const Paginator = (props: any) => {
   const { pagesCount } = useSelector((state: any) => state.catalogue);
 
+  const scrollOnTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className={style.paginator}>
       <button
         disabled={props.thisPage > 1 ? false : true}
         onClick={() => {
           props.setThisPage(props.thisPage - 1);
+          scrollOnTop();
         }}
       >
         prev
@@ -23,6 +28,7 @@ const Paginator = (props: any) => {
         disabled={props.thisPage < pagesCount ? false : true}
         onClick={() => {
           props.setThisPage(props.thisPage + 1);
+          scrollOnTop();
         }}
       >
         next
