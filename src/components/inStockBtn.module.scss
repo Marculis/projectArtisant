@@ -1,8 +1,7 @@
 .stockBtn {
   position: relative;
   top: -53px;
-  left: 1000px;
-  margin-bottom: 20px;
+  left: 1070px;
   button {
     color: #000000;
     text-transform: capitalize;
@@ -20,5 +19,8 @@
   .stockBtn {
     top: 0px;
     left: 0px;
+    button {
+      margin-bottom: 20px;
+    }
   }
 }
