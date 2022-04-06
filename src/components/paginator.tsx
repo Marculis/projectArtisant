@@ -1,9 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import style from "./paginator.module.scss";
 
 const Paginator = (props: any) => {
-  const dispatch = useDispatch();
-
   const { pagesCount } = useSelector((state: any) => state.catalogue);
 
   return (
@@ -11,7 +9,7 @@ const Paginator = (props: any) => {
       <button
         disabled={props.thisPage > 1 ? false : true}
         onClick={() => {
-          dispatch(props.setThisPage(props.thisPage - 1));
+          props.setThisPage(props.thisPage - 1);
         }}
       >
         prev
@@ -24,7 +22,7 @@ const Paginator = (props: any) => {
       <button
         disabled={props.thisPage < pagesCount ? false : true}
         onClick={() => {
-          dispatch(props.setThisPage(props.thisPage + 1));
+          props.setThisPage(props.thisPage + 1);
         }}
       >
         next
