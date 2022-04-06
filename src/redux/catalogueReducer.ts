@@ -9,14 +9,6 @@ export const getCatalogue = createAsyncThunk(
   }
 );
 
-const setLoadingTrue = (state: any) => {
-  state.isLoading = true;
-};
-
-const setLoadingFalse = (state: any) => {
-  state.isLoading = false;
-};
-
 export const catalogueReducer = createSlice({
   name: "catalogue",
   initialState: {
@@ -39,10 +31,7 @@ export const catalogueReducer = createSlice({
       });
     },
   },
-  /*  extraReducers: {
-    [getCatalogue.pending]: setLoadingTrue,
-    [getCatalogue.fulfilled]: setLoadingFalse,
-  }, */
+ 
 });
 
 export const { setCatalogue, setPagesCount, setItemsInStock } =
