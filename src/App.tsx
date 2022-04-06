@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import style from "./App.module.scss";
-import { getCatalogue, setPagesCount } from "./redux/catalogueReducer";
+import {
+  getCatalogue,
+  setPagesCount,
+  setPageSize,
+} from "./redux/catalogueReducer";
 import Paginator from "./components/paginator";
 import Catalog from "./components/catalog";
 import PageSizeSelector from "./components/pageSizeSelector";
@@ -10,11 +14,10 @@ import InStockBtns from "./components/inStockBtn";
 const App = () => {
   const dispatch = useDispatch();
   const [thisPage, setThisPage] = useState(1);
-  const [pageSize, setPageSize] = useState(20);
 
   useEffect(() => {
-    loadPage().then(() => dispatch(setPagesCount(pageSize)));
-  });
+    loadPage().then(() => dispatch(setPagesCount()));
+  }, []);
 
   const loadPage = async () => {
     await dispatch(getCatalogue());
@@ -22,8 +25,8 @@ const App = () => {
 
   const changePageSize = (pageDimension: number) => {
     setThisPage(1);
-    setPageSize(pageDimension);
-    loadPage().then(() => dispatch(setPagesCount(pageSize)));
+    dispatch(setPageSize(pageDimension));
+    dispatch(setPagesCount());
   };
 
   return (
@@ -34,7 +37,7 @@ const App = () => {
         <Paginator thisPage={thisPage} setThisPage={setThisPage} />
         <PageSizeSelector changePageSize={changePageSize} />
         <InStockBtns setThisPage={setThisPage} />
-        <Catalog pageSize={pageSize} thisPage={thisPage} />
+        <Catalog thisPage={thisPage} />
         <Paginator thisPage={thisPage} setThisPage={setThisPage} />
       </div>
     </div>
